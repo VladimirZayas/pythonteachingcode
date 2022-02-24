@@ -1,7 +1,9 @@
+import imp
 from tkinter import *
 from math import sqrt as sqr
-from math import sin 
-
+from math import sin as Sin
+from math import tan as Tan
+from math import cos as Cos
 class Application(Frame):
     """
     An example of a calculator app developed using the 
@@ -74,6 +76,9 @@ class Application(Frame):
         e = e.replace("²", "**2")
         e = e.replace("^", "**")
         e = e.replace("÷", "/")
+        e = e.replace("sin","Sin")
+        e = e.replace("tan","Tan")
+        e = e.replace("cos","Cos")
 
         try:
             ans = eval(e)
@@ -145,7 +150,13 @@ class Application(Frame):
         :return: None
         """
         self.sin_button = Button(self, text="sin", width=9, height=3, command=lambda: self.add_chr('sin'))
-        self.sin_button.grid(row=1, column=6)
+        self.sin_button.grid(row=2, column=6)
+
+        self.tan_button = Button(self, text="tan", width=9, height=3, command=lambda: self.add_chr('tan'))
+        self.tan_button.grid(row=3, column=6)
+
+        self.cos_button = Button(self, text="cos", width=9, height=3, command=lambda: self.add_chr('cos'))
+        self.cos_button.grid(row=4, column=6)
 
         self.eq_bttn = Button(self, text="=", width=20, height=3, bg="lightgrey", command=lambda: self.calculate())
         self.eq_bttn.grid(row=4, column=4, columnspan=2)
